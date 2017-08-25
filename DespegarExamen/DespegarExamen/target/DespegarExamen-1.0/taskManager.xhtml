@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Despegar Examen - Task Manager</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        <p:panel header="Tasks">
+            <h:outputText value="Ingrese un Numero" />
+            <p:inputText id="input" value="#{taskManager.input}"/>
+            
+            <p:dataTable id="taskDashboard" rowIndexVar="row" var="task" value="#{taskManager.tasks}">
+                <p:column headerText="ID">
+                    <h:outputText value="#{row + 1}" />
+                </p:column>
+                
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{task.name}" />
+                </p:column>
+
+                <p:column headerText="Accion">
+                    <p:commandButton icon="ui-icon-play" value="Ejecutar" actionListener="#{taskManager.execute(task)}" rendered="${task.disabled}"/>
+                </p:column>                
+                
+                <p:column headerText="Estado">
+                    <h:outputText value="#{task.status}" />
+                </p:column>
+                
+                <p:column headerText="Resultado">
+                    <h:outputText value="#{task.result}" />
+                </p:column>   
+            </p:dataTable>
+            <p:commandButton value="Nueva Tarea" onclick="PF('nuevaTarea').show();" type="button" />
+        </p:panel>
+        <p:poll interval="1" listener="#{taskManager.updateTasks}" update="taskDashboard" />
+
+        <p:dialog header="Nueva Tarea" widgetVar="nuevaTarea" modal="true" height="100">
+            <h:outputText value="Nombre" />
+            <p:inputText id="newTask" value="#{taskManager.newTask}"/>
+            <p:commandButton value="Aceptar" actionListener="#{taskManager.addNewTask()}" onclick="PF('nuevaTarea').hide();"/>
+        </p:dialog>           
+        
+    </h:form>
+</h:body>
+</html>

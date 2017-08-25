@@ -1,0 +1,7 @@
+egc.mercadolibre.examen.db.daos
+egc.mercadolibre.examen.db.entities
+egc.mercadolibre.examen.db.session
+egc.mercadolibre.examen.domain.services
+egc.mercadolibre.examen.site.controllers
+egc.mercadolibre.examen.ws.entities.js
+egc.mercadolibre.examen.ws.services

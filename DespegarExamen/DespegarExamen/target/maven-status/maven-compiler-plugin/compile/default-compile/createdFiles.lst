@@ -1,0 +1,9 @@
+egc\despegar\examen\batch\states\ExecState.class
+egc\despegar\examen\batch\states\WaitState.class
+egc\despegar\examen\batch\states\FinishState.class
+egc\despegar\examen\batch\services\TaskManagerService.class
+egc\despegar\examen\site\controllers\TaskManager.class
+egc\despegar\examen\site\entities\TaskView.class
+egc\despegar\examen\batch\states\FailedState.class
+egc\despegar\examen\batch\tasks\Task.class
+egc\despegar\examen\batch\states\State.class
